@@ -4,9 +4,9 @@ public class AdventureUI {
         Adventure adventure = new Adventure();
 
         boolean goingIntoRooms = false;
-        IO.println("You have entered into the adventure");
-        IO.println("Type GO NORTH to go north, GO SOUTH to go south, GO WEST to go west, GO EAST to go east");
-        IO.println("Type LOOK to look around");
+        IO.println("You have entered the most amazing dungeon!!!!");
+        IO.println("-----------------------------------------------");
+        printHelpMenu();
 
 
         while (!goingIntoRooms) {
@@ -15,24 +15,55 @@ public class AdventureUI {
 
             switch (kommando) {
                 case "GO NORTH" -> {
-                    IO.println("going north");
+                    if (adventure.goNorth()) {
+                        IO.println("Going north");
+                    } else {
+                        IO.println("You cannot go that way.");
+                    }
                 }
                 case "GO SOUTH" -> {
-                    IO.println("going south");
+                    if (adventure.goSouth()) {
+                        IO.println("Going south.");
+                    } else {
+                        IO.println("You cannot go that way.");
+                    }
+
                 }
                 case "GO WEST" -> {
-                    IO.println("going west");
+                    if (adventure.goWest()) {
+                        IO.println("Going west.");
+                    } else {
+                        IO.println("You cannot go that way.");
+                    }
+
                 }
                 case "GO EAST" -> {
-                    IO.println("going east");
+                    if(adventure.goEast()){
+                        IO.println("Going east.");
+                    } else {
+                        IO.println("You cannot go that way.");
+                    }
+
                 }
                 case "LOOK" -> {
-                    IO.println("Looking around");
+                    IO.println(adventure.lookAround());
+                }
+                case "EXIT" -> {
+                    goingIntoRooms = true;
+                }
+                case "HELP" -> {
+                    printHelpMenu();
                 }
             }
 
         }
     }
 
+    public void printHelpMenu() {
+        IO.println("Type GO NORTH to go north, GO SOUTH to go south, GO WEST to go west, GO EAST to go east");
+        IO.println("Type LOOK to look around");
+        IO.println("Type EXIT to quit the program.");
+        IO.println("Type HELP to get all commands.");
+    }
 
 }
