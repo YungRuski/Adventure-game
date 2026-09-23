@@ -2,10 +2,6 @@ public class Adventure {
 
     private Room currentRoom;
 
-    public Adventure(Room firstRoom) {
-        this.currentRoom = firstRoom;
-    }
-
     public Adventure() {
         makeRooms();
     }
