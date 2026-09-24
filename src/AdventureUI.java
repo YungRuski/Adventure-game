@@ -15,7 +15,7 @@ public class AdventureUI {
 
             switch (kommando) {
                 case "GO NORTH" -> {
-                    if (adventure.goNorth()) {
+                    if (player.goNorth()) {
                         IO.println("Going north");
                     } else {
                         IO.println("You cannot go that way.");
