@@ -1,9 +1,12 @@
 public class Map {
 
-    public Room currentRoom;
+    private Room firstRoom;
 
     public Map() {
         makeRooms();
+    }
+    public Room getFirstRoom(){
+        return firstRoom;
     }
 
     private void makeRooms() {
@@ -18,7 +21,7 @@ public class Map {
         Room room8 = new Room("Room 8", "A room with no distinct features, except three doors.");
         Room room9 = new Room("Room 9", "A room with no distinct features, except two doors.");
 
-        currentRoom = room1;
+        firstRoom = room1;
 
         room1.setEast(room2);
         room2.setEast(room3);

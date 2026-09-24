@@ -3,6 +3,7 @@ public class AdventureUI {
     public void startGame() {
         Adventure adventure = new Adventure();
 
+
         boolean goingIntoRooms = false;
         IO.println("You have entered the most amazing dungeon!!!!");
         IO.println("-----------------------------------------------");
@@ -15,7 +16,7 @@ public class AdventureUI {
 
             switch (kommando) {
                 case "GO NORTH" -> {
-                    if (player.goNorth()) {
+                    if (adventure.goNorth()) {
                         IO.println("Going north");
                     } else {
                         IO.println("You cannot go that way.");
