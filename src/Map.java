@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Map {
 
     private Room firstRoom;
@@ -11,15 +13,27 @@ public class Map {
 
     private void makeRooms() {
 
-        Room room1 = new Room("Room 1", "A room with no distinct features, except two doors.");
-        Room room2 = new Room("Room 2", "A room with no distinct features, except two doors.");
-        Room room3 = new Room("Room 3", "A room with no distinct features, except two doors.");
-        Room room4 = new Room("Room 4", "A room with no distinct features, except two doors.");
-        Room room5 = new Room("Room 5", "A room with no distinct features, except one door.");
-        Room room6 = new Room("Room 6", "A room with no distinct features, except two doors.");
-        Room room7 = new Room("Room 7", "A room with no distinct features, except two doors.");
-        Room room8 = new Room("Room 8", "A room with no distinct features, except three doors.");
-        Room room9 = new Room("Room 9", "A room with no distinct features, except two doors.");
+
+        Item lamp = new Item("lamp", "a shiny brass lamp");
+        Item key = new Item("key", "a rusty old boken key");
+        Item ring = new Item("ring", "a gold ring");
+        Item Switch = new Item("Switch", "a switch on the wall");
+        Item knife = new Item("knife", "a hunting knife");
+        Item watch = new Item("watch", "a broken watch");
+
+        ArrayList<Item> room1Items = new ArrayList<>();
+        room1Items.add(key);
+        room1Items.add(knife);
+
+        Room room1 = new Room("Room 1", "A room with no distinct features, except two doors.", room1Items);
+        Room room2 = new Room("Room 2", "A room with no distinct features, except two doors.", new ArrayList<Item>());
+        Room room3 = new Room("Room 3", "A room with no distinct features, except two doors.", new ArrayList<Item>());
+        Room room4 = new Room("Room 4", "A room with no distinct features, except two doors.", new ArrayList<Item>());
+        Room room5 = new Room("Room 5", "A room with no distinct features, except one door.", new ArrayList<Item>());
+        Room room6 = new Room("Room 6", "A room with no distinct features, except two doors.", new ArrayList<Item>());
+        Room room7 = new Room("Room 7", "A room with no distinct features, except two doors.", new ArrayList<Item>());
+        Room room8 = new Room("Room 8", "A room with no distinct features, except three doors.", new ArrayList<Item>());
+        Room room9 = new Room("Room 9", "A room with no distinct features, except two doors.", new ArrayList<Item>());
 
         firstRoom = room1;
 

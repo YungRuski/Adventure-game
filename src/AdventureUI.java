@@ -55,6 +55,13 @@ public class AdventureUI {
                 case "HELP" -> {
                     printHelpMenu();
                 }
+                case "TAKE" -> {
+                    if (adventure.takeItem()) {
+                        IO.println("Picking up item");
+                    } else {
+                        IO.println("intet at samle op");
+                    }
+                }
             }
 
         }
