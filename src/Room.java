@@ -9,10 +9,10 @@ public class Room {
     private Room west;
     private ArrayList<Item> items;
 
-    public Room(String name, String description, ArrayList<Item> items) {
+    public Room(String name, String description) {
         this.name = name;
         this.description = description;
-        this.items = items;
+        this.items = new ArrayList<>();
     }
 
     public String getName() {
@@ -63,4 +63,11 @@ public class Room {
     public ArrayList<Item> getItems() {
         return items;
     }
+    public void addItem (Item item){
+        items.add(item);
+    }
+    public void removeItem (Item item){
+        items.remove(item);
+    }
+
 }

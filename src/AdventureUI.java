@@ -1,3 +1,5 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 public class AdventureUI {
 
     public void startGame() {
@@ -12,56 +14,49 @@ public class AdventureUI {
 
         while (!goingIntoRooms) {
 
-            String kommando = IO.readln();
+            String input = IO.readln().toUpperCase();
 
-            switch (kommando) {
-                case "GO NORTH" -> {
-                    if (adventure.goNorth()) {
-                        IO.println("Going north");
-                    } else {
-                        IO.println("You cannot go that way.");
-                    }
-                }
-                case "GO SOUTH" -> {
-                    if (adventure.goSouth()) {
-                        IO.println("Going south.");
-                    } else {
-                        IO.println("You cannot go that way.");
-                    }
+            String[] commandArray = input.split(" ");
+            /*
+              COMMAND   ARGUMENT
+              go        north
+              go        south
+              take      sword
+              drop      key
+              inventory
+              look
+             */
 
-                }
-                case "GO WEST" -> {
-                    if (adventure.goWest()) {
-                        IO.println("Going west.");
-                    } else {
-                        IO.println("You cannot go that way.");
-                    }
+            String command = commandArray[0];
+            String argument = "";
+            if(commandArray.length > 1){
 
-                }
-                case "GO EAST" -> {
-                    if(adventure.goEast()){
-                        IO.println("Going east.");
-                    } else {
-                        IO.println("You cannot go that way.");
-                    }
+                argument = commandArray[1];
+            }
 
-                }
-                case "LOOK" -> {
-                    IO.println(adventure.lookAround());
-                }
-                case "EXIT" -> {
-                    goingIntoRooms = true;
-                }
-                case "HELP" -> {
-                    printHelpMenu();
-                }
+            switch (command) {
+                case "GO" -> go(argument, adventure);
+                case "LOOK" -> IO.println(adventure.lookAround());
+                case "EXIT" -> goingIntoRooms = true;
+                case "HELP" -> printHelpMenu();
                 case "TAKE" -> {
-                    if (adventure.takeItem()) {
+                    if (adventure.takeItem(argument)) {
                         IO.println("Picking up item");
                     } else {
                         IO.println("intet at samle op");
                     }
                 }
+                case "DROP" -> {
+                    if(adventure.dropItem(argument)) {
+                        IO.println("Dropping item");
+                    } else {
+                        IO.println("Nothing to drop");
+                    }
+                }
+                case "INVENTORY" -> {
+                    adventure.printInventory();
+                }
+                default -> {}
             }
 
         }
@@ -73,5 +68,24 @@ public class AdventureUI {
         IO.println("Type EXIT to quit the program.");
         IO.println("Type HELP to get all commands.");
     }
+
+    private void go(String direction, Adventure adventure) {
+        switch (direction) {
+            case "NORTH" -> {
+                IO.println(adventure.goNorth() ? "going north" : "Could not go that way");
+            }
+            case "SOUTH" -> {
+                IO.println(adventure.goSouth() ? "going south" : "Could not go that way");
+            }
+            case "EAST" -> {
+                IO.println(adventure.goEast() ? "going east" : "Could not go that way");
+            }
+            case "WEST" -> {
+                IO.println(adventure.goWest() ? "going west" : "Could not go that way");
+            }
+        }
+    }
+
+
 
 }
