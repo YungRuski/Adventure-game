@@ -2,13 +2,11 @@ public class Adventure {
 
 Map map = new Map();
 Room firstRoom = map.getFirstRoom();
-Item firstItem = Item.take
 
 Player player = new Player(firstRoom);
 
 
 
-Player playerItem = new Player(takeItem());
 
 public boolean goNorth(){
     return player.goNorth();
@@ -25,7 +23,14 @@ public boolean goWest(){
 public String lookAround(){
     return player.lookAround();
 }
-public boolean takeItem(){
-    return player.takeItem();
+public boolean takeItem(String itemName){
+    return player.takeItem(itemName);
 }
+public boolean dropItem(String itemName){
+    return player.dropItem(itemName);
+}
+public void printInventory(){
+    player.printInventory();
+}
+
 }

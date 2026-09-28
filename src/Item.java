@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Item {
 
     private String itemName;
@@ -11,13 +9,14 @@ public class Item {
         this.itemDescription = itemDescription;
     }
 
-    public String getitemName() {
+    public String getItemName() {
         return itemName;
     }
 
     public String getItemDescription() {
         return itemDescription;
     }
+
 
     @Override
     public String toString() {

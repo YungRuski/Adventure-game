@@ -10,24 +10,33 @@ public class Player {
         this.inventory = new ArrayList<>();
     }
 
-    public String lookAround(){
-        return String.format("""
-                %s
-                %s
-                available items: %s
-                """, currentRoom.getName(),currentRoom.getDescription(), currentRoom.getItems());
+    public String lookAround() {
+        if (currentRoom.getItems().isEmpty()) {
+            return String.format("""
+                    %s
+                    %s
+                    available items: none
+                    """, currentRoom.getName(), currentRoom.getDescription());
+        } else {
+            return String.format("""
+                    %s
+                    %s
+                    available items: %s
+                    """, currentRoom.getName(), currentRoom.getDescription(), currentRoom.getItems());
+        }
     }
 
-    public boolean goNorth(){
-        if (currentRoom.getNorth() != null){
+    public boolean goNorth() {
+        if (currentRoom.getNorth() != null) {
             currentRoom = currentRoom.getNorth();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
-    public boolean goSouth(){
-        if (currentRoom.getSouth() != null){
+
+    public boolean goSouth() {
+        if (currentRoom.getSouth() != null) {
             currentRoom = currentRoom.getSouth();
             return true;
         } else {
@@ -44,22 +53,48 @@ public class Player {
         }
     }
 
-    public boolean goWest(){
-        if(currentRoom.getWest() != null){
+    public boolean goWest() {
+        if (currentRoom.getWest() != null) {
             currentRoom = currentRoom.getWest();
             return true;
         } else {
             return false;
         }
     }
-    public ArrayList<Item> getInventory(){
+
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
 
-    public void takeItem(Item item){
-        inventory.add(item);
+    public void printInventory() {
+        for (Item item : inventory) {
+            IO.println(item);
+        }
     }
-    public void dropItem(Item item){
-        inventory.remove(item);
+
+    public boolean takeItem(String itemName) {
+        for (Item item : currentRoom.getItems()) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
+                inventory.add(item);
+                currentRoom.removeItem(item);
+                return true;
+            }
+
+        }
+        IO.println("There were no items");
+        return false;
     }
+
+    public boolean dropItem(String itemName) {
+        for (Item item : inventory) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
+                currentRoom.addItem(item);
+                inventory.remove(item);
+                return true;
+            }
+        }
+        IO.println("There were no items");
+        return false;
+    }
+
 }
