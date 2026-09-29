@@ -22,6 +22,12 @@ public class Map {
         Item knife = new Item("knife", "a hunting knife");
         Item watch = new Item("watch", "a broken watch");
 
+        Food bread = new Food("Bread", "a loaf of bread", 10);
+        Food apple = new Food ("Apple", "a red shiny apple", 15);
+        Food mushroom = new Food ("Mushroom", "a suspicious shroom", -10);
+        Food suspiciousSteak = new Food ("Steak", "a steak filled with maggots", -20);
+        Food steak = new Food ("Wagyu steak", "a steak filled with fat marbling", 50);
+
         Room room1 = new Room("Room 1", "A room with no distinct features, except two doors.");
         Room room2 = new Room("Room 2", "A room with no distinct features, except two doors.");
         Room room3 = new Room("Room 3", "A room with no distinct features, except two doors.");
@@ -38,6 +44,11 @@ public class Map {
         room3.addItem(watch);
         room3.addItem(key);
         room3.addItem(Switch);
+        room1.addItem(bread);
+        room2.addItem(mushroom);
+        room3.addItem(steak);
+        room4.addItem(suspiciousSteak);
+        room5.addItem(apple);
 
         firstRoom = room1;
 

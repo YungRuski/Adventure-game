@@ -29,7 +29,7 @@ public class AdventureUI {
 
             String command = commandArray[0];
             String argument = "";
-            if(commandArray.length > 1){
+            if (commandArray.length > 1) {
 
                 argument = commandArray[1];
             }
@@ -47,7 +47,7 @@ public class AdventureUI {
                     }
                 }
                 case "DROP" -> {
-                    if(adventure.dropItem(argument)) {
+                    if (adventure.dropItem(argument)) {
                         IO.println("Dropping item");
                     } else {
                         IO.println("Nothing to drop");
@@ -56,7 +56,18 @@ public class AdventureUI {
                 case "INVENTORY" -> {
                     adventure.printInventory();
                 }
-                default -> {}
+                case "HEALTH" -> {
+                    adventure.printHealth();
+                }
+                case "EAT" -> {
+                    if (adventure.eat(argument)) {
+                        IO.println("eating food");
+                    } else {
+                        IO.println("Nothing to eat");
+                    }
+                }
+                default -> {
+                }
             }
 
         }
@@ -85,7 +96,6 @@ public class AdventureUI {
             }
         }
     }
-
 
 
 }
