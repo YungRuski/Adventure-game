@@ -69,7 +69,7 @@ public class Player {
     }
 
     public void printInventory() {
-        if (inventory.isEmpty()){
+        if (inventory.isEmpty()) {
             IO.println("Nothing in inventory.");
         }
         for (Item item : inventory) {
@@ -146,19 +146,11 @@ public class Player {
         if (item instanceof Food food) {
             health += food.getHealthPoints();
             inventory.remove(item);
+            IO.println("You are eating " + itemName);
             return EatResult.EATEN;
         }
-        IO.println("There were no items");
+        IO.println("There were no " + itemName);
         return EatResult.NOT_FOUND;
     }
-//    public boolean eat(String itemName) {
-//        Item item = findItemInventory(itemName);
-//        if (item instanceof Food food) {
-//            health += food.getHealthPoints();
-//            inventory.remove(item);
-//            return true;
-//        }
-//        IO.println("There were no items");
-//        return false;
-//    }
+
 }
