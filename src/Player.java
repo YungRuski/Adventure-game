@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
-    private ArrayList<Item> inventory;
+    private final ArrayList<Item> inventory;
     private Item items;
     private int health;
 
@@ -109,7 +109,11 @@ public class Player {
     public String getHealthDescription() {
         if (health >= 100) {
             return "You have " + health + " hp and is healthy.";
+        } else if (health >= 80) {
+            return "You have " + health + " hp, try to eat something to gain full health again.";
         } else if (health >= 50) {
+            return "You have " + health + " hp, try to find a safe spot and heal up";
+        } else if (health >= 30) {
             return "You have " + health + " hp and should avoid fighting.";
         } else if (health >= 1) {
             return "You have " + health + " hp and is close to dying.";
