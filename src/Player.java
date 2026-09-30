@@ -146,10 +146,13 @@ public class Player {
         if (item instanceof Food food) {
             health += food.getHealthPoints();
             inventory.remove(item);
-            IO.println("You are eating " + itemName + " and gained " + food.getHealthPoints() + " HP.");
             return EatResult.EATEN;
         }
-        IO.println("There were no " + itemName);
+        for (Item finditem : inventory)
+        if (!inventory.isEmpty()){
+            return EatResult.NOT_FOOD;
+        }
+
         return EatResult.NOT_FOUND;
     }
 
