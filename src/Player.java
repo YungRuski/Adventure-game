@@ -146,7 +146,7 @@ public class Player {
         if (item instanceof Food food) {
             health += food.getHealthPoints();
             inventory.remove(item);
-            IO.println("You are eating " + itemName);
+            IO.println("You are eating " + itemName + " and gained " + food.getHealthPoints() + " HP.");
             return EatResult.EATEN;
         }
         IO.println("There were no " + itemName);
