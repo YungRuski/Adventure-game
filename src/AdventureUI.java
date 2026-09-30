@@ -60,11 +60,7 @@ public class AdventureUI {
                     adventure.printHealth();
                 }
                 case "EAT" -> {
-                    if (adventure.eat(argument)) {
-                        IO.println("eating food");
-                    } else {
-                        IO.println("Nothing to eat");
-                    }
+                    adventure.eat(argument);
                 }
                 default -> {
                 }
