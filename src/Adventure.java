@@ -42,14 +42,8 @@ public class Adventure {
         IO.println(player.getHealthDescription());
     }
 
-    public String eat(String itemName) {
-        if (player.eat(itemName) == EatResult.EATEN) {
-            return "You are eating " + itemName;
-        }
-        if (player.eat(itemName) == EatResult.NOT_FOOD) {
-            return "You can't eat a " + itemName;
-        }
-        return EatResult.NOT_FOUND.toString();
+    public EatResult eat(String itemName) {
+       return player.eat(itemName);
 
     }
 }

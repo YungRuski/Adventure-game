@@ -60,7 +60,14 @@ public class AdventureUI {
                     adventure.printHealth();
                 }
                 case "EAT" -> {
-                    adventure.eat(argument);
+                    EatResult result = adventure.eat(argument);
+                    switch (result) {
+                        case EatResult.EATEN -> IO.println("You are eating " + argument + ".");
+                        case EatResult.NOT_FOOD -> IO.println("You can't eat a " + argument + ".");
+                        case EatResult.NOT_FOUND -> IO.println("There is no " + argument + " in your inventory.");
+
+                    }
+                    //return EatResult.NOT_FOUND.toString();
                 }
                 default -> {
                 }
