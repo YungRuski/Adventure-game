@@ -14,7 +14,7 @@ public class AdventureUI {
 
         while (!goingIntoRooms) {
 
-            String input = IO.readln().toUpperCase();
+            String input = IO.readln();
 
             String[] commandArray = input.split(" ");
             /*
@@ -34,7 +34,7 @@ public class AdventureUI {
                 argument = commandArray[1];
             }
 
-            switch (command) {
+            switch (command.toUpperCase()) {
                 case "GO" -> go(argument, adventure);
                 case "LOOK" -> IO.println(adventure.lookAround());
                 case "EXIT" -> goingIntoRooms = true;
@@ -43,7 +43,7 @@ public class AdventureUI {
                     if (adventure.takeItem(argument)) {
                         IO.println("Picking up item");
                     } else {
-                        IO.println("intet at samle op");
+                        IO.println("Nothing to find");
                     }
                 }
                 case "DROP" -> {
@@ -84,7 +84,7 @@ public class AdventureUI {
     }
 
     private void go(String direction, Adventure adventure) {
-        switch (direction) {
+        switch (direction.toUpperCase()) {
             case "NORTH" -> {
                 IO.println(adventure.goNorth() ? "going north" : "Could not go that way");
             }

@@ -148,12 +148,11 @@ public class Player {
             inventory.remove(item);
             return EatResult.EATEN;
         }
-        for (Item finditem : inventory)
-        if (!inventory.isEmpty()){
+        if (item != null) {
             return EatResult.NOT_FOOD;
+        } else {
+            return EatResult.NOT_FOUND;
         }
 
-        return EatResult.NOT_FOUND;
     }
-
 }
