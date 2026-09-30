@@ -14,7 +14,7 @@ public class AdventureUI {
 
         while (!goingIntoRooms) {
 
-            String input = IO.readln().toUpperCase();
+            String input = IO.readln();
 
             String[] commandArray = input.split(" ");
             /*
@@ -29,12 +29,12 @@ public class AdventureUI {
 
             String command = commandArray[0];
             String argument = "";
-            if(commandArray.length > 1){
+            if (commandArray.length > 1) {
 
                 argument = commandArray[1];
             }
 
-            switch (command) {
+            switch (command.toUpperCase()) {
                 case "GO" -> go(argument, adventure);
                 case "LOOK" -> IO.println(adventure.lookAround());
                 case "EXIT" -> goingIntoRooms = true;
@@ -43,11 +43,11 @@ public class AdventureUI {
                     if (adventure.takeItem(argument)) {
                         IO.println("Picking up item");
                     } else {
-                        IO.println("intet at samle op");
+                        IO.println("Nothing to find");
                     }
                 }
                 case "DROP" -> {
-                    if(adventure.dropItem(argument)) {
+                    if (adventure.dropItem(argument)) {
                         IO.println("Dropping item");
                     } else {
                         IO.println("Nothing to drop");
@@ -56,7 +56,21 @@ public class AdventureUI {
                 case "INVENTORY" -> {
                     adventure.printInventory();
                 }
-                default -> {}
+                case "HEALTH" -> {
+                    adventure.printHealth();
+                }
+                case "EAT" -> {
+                    EatResult result = adventure.eat(argument);
+                    switch (result) {
+                        case EatResult.EATEN -> IO.println("You are eating " + argument + ".");
+                        case EatResult.NOT_FOOD -> IO.println("You can't eat a " + argument + ".");
+                        case EatResult.NOT_FOUND -> IO.println("There is no " + argument + " in your inventory.");
+
+                    }
+                    //return EatResult.NOT_FOUND.toString();
+                }
+                default -> {
+                }
             }
 
         }
@@ -70,7 +84,7 @@ public class AdventureUI {
     }
 
     private void go(String direction, Adventure adventure) {
-        switch (direction) {
+        switch (direction.toUpperCase()) {
             case "NORTH" -> {
                 IO.println(adventure.goNorth() ? "going north" : "Could not go that way");
             }
@@ -85,7 +99,6 @@ public class AdventureUI {
             }
         }
     }
-
 
 
 }

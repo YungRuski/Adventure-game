@@ -63,10 +63,12 @@ public class Room {
     public ArrayList<Item> getItems() {
         return items;
     }
-    public void addItem (Item item){
+
+    public void addItem(Item item) {
         items.add(item);
     }
-    public void removeItem (Item item){
+
+    public void removeItem(Item item) {
         items.remove(item);
     }
 
