@@ -14,7 +14,7 @@ public class AdventureUI {
 
         while (!goingIntoRooms) {
 
-            String input = IO.readln().toUpperCase();
+            String input = IO.readln();
 
             String[] commandArray = input.split(" ");
             /*
@@ -34,21 +34,21 @@ public class AdventureUI {
                 argument = commandArray[1];
             }
 
-            switch (command) {
-                case "GO" -> go(argument, adventure);
+            switch (command.toUpperCase()) {
+                case "GO" -> go(argument.toUpperCase(), adventure);
                 case "LOOK" -> IO.println(adventure.lookAround());
                 case "EXIT" -> goingIntoRooms = true;
                 case "HELP" -> printHelpMenu();
                 case "TAKE" -> {
                     if (adventure.takeItem(argument)) {
-                        IO.println("Picking up item");
+                        IO.println("Picking up " + argument);
                     } else {
-                        IO.println("intet at samle op");
+                        IO.println("There is no " + argument + " in this room.");
                     }
                 }
                 case "DROP" -> {
                     if (adventure.dropItem(argument)) {
-                        IO.println("Dropping item");
+                        IO.println("Dropping " + argument);
                     } else {
                         IO.println("Nothing to drop");
                     }
@@ -67,7 +67,6 @@ public class AdventureUI {
                         case EatResult.NOT_FOUND -> IO.println("There is no " + argument + " in your inventory.");
 
                     }
-                    //return EatResult.NOT_FOUND.toString();
                 }
                 default -> {
                 }
@@ -84,7 +83,7 @@ public class AdventureUI {
     }
 
     private void go(String direction, Adventure adventure) {
-        switch (direction) {
+        switch (direction.toUpperCase()) {
             case "NORTH" -> {
                 IO.println(adventure.goNorth() ? "going north" : "Could not go that way");
             }
