@@ -35,7 +35,7 @@ public class AdventureUI {
             }
 
             switch (command.toUpperCase()) {
-                case "GO" -> go(argument.toUpperCase(), adventure);
+                case "GO" -> go(argument, adventure);
                 case "LOOK" -> IO.println(adventure.lookAround());
                 case "EXIT" -> goingIntoRooms = true;
                 case "HELP" -> printHelpMenu();
